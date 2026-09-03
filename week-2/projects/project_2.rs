@@ -1,6 +1,6 @@
 fn main() {
 	let toshiba_price:f32 = 450000.0;
-	let mac_price:f32 = 15000000.0;
+	let mac_price:f32 = 1500000.0;
 	let hp_price:f32 = 750000.0;
 	let dell_price:f32 = 2850000.0;
 	let acer_price:f32 = 250000.0;
@@ -15,8 +15,7 @@ fn main() {
 	+ (mac_price * mac_qty) + (hp_price * hp_qty)
 	 + (dell_price * dell_qty) + (acer_price * acer_qty);
 
-	let average:f32 = (toshiba_price + mac_price + hp_price + dell_price + acer_price) 
-		/ (toshiba_qty + mac_qty + hp_qty + dell_qty + acer_qty); 
+	let average:f32 = sum / (toshiba_qty + mac_qty + hp_qty + dell_qty + acer_qty); 
 
 	println!("The sum of the sales record is: {}", sum );
 	println!("The average of the sales record is: {}", average );
