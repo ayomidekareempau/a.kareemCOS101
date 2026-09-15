@@ -24,16 +24,20 @@ fn main() {
         //Value for c
         println!("Value of c? ");
         io::stdin().read_line(&mut c_input).expect("Expected a string");
-        let c:f64 = c_input.trim().parse().expect("Please enter a valid numbers next time");
+        let c:f64 = c_input.trim().parse().expect("Please enter a valid number next time");
 
         //Discriminant formula
         let d:f64= b.powf(2.0) - 4.0 * a * c;
 
+        let pos_quadratic:f64 = (-b + d.sqrt()) / (2.0 * a); //positive side of the quadratic equation
+        let neg_quadratic:f64 = (-b - d.sqrt()) / (2.0 * a); //negative side of the quadratic equation
+
         if d < 0.0{
             println!("No roots"); //Gives this outputs since you can't squareroot negative numbers
-        } else {
-            let pos_quadratic:f64 = (-b + d.sqrt()) / (2.0 * a); //positive side of the quadratic equation
-            let neg_quadratic:f64 = (-b - d.sqrt()) / (2.0 * a); //negative side of the quadratic equation
+        } else if pos_quadratic == neg_quadratic {
+            println!("The quadratic root is {}", pos_quadratic ); 
+        }
+        else {
             println!("The quadratic roots of the equations are {} and {}", pos_quadratic, neg_quadratic);
         }
 
@@ -41,7 +45,7 @@ fn main() {
         println!("Calculate again?");
         io::stdin().read_line(&mut again).expect("Enter a valid string");
 
-        //will always rerun the program unless the user types no
+        //will always rerun the program unless the user inputs no
         if again.trim().to_lowercase() == "no" {
             try_again = false;
             println!("Byeee!");
