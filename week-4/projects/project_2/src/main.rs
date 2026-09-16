@@ -13,10 +13,10 @@ fn main() {
 
     println!("Are you experienced? (Yes or No)");
     io::stdin().read_line(&mut input1).expect("Enter a valid string!");
-    let experience = input1.trim(); 
+    let experience = input1.trim().to_lowercase(); 
 
     //checks if user is experienced
-    if experience == "Yes" {
+    if experience == "yes" {
         is_experienced = true;
     } else {
         is_experienced = false;
@@ -29,17 +29,17 @@ fn main() {
 
 
     if age >= 40 && is_experienced {
-        println!("Your annual incentive is: N{:?}", annuals[0]); // Greater than 40 and experienced
+        println!("Your annual incentive is: N{}", annuals[0]); // Greater than 40 and experienced
     } else if age >= 30 && age <=39 && is_experienced {
-        println!("Your annual incentive is: N{:?}", annuals[1]); //Greater than 30 or less than 39 and experienced
+        println!("Your annual incentive is: N{}", annuals[1]); //Greater than 30 or less than 39 and experienced
     } else if age <= 29 && is_experienced{ 
         /*
             I'm assuming the slide meant 29 and not 28.
             If not, users with age 29 would get an annual incentive of 100k even when experinced
         */
-        println!("Your annual incentive is: N{:?}", annuals[2]); //
+        println!("Your annual incentive is: N{}", annuals[2]); //
     } else {
-        println!("Your annual incentive is: N{:?}", annuals[3]);
+        println!("Your annual incentive is: N{}", annuals[3]);
     }
 
 }
