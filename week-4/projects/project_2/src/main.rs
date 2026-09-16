@@ -35,7 +35,7 @@ fn main() {
     } else if age <= 29 && is_experienced{ 
         /*
             I'm assuming the slide meant 29 and not 28.
-            If not, user's with age 29 would get an annual incentive of 100k even when experinced
+            If not, users with age 29 would get an annual incentive of 100k even when experinced
         */
         println!("Your annual incentive is: N{:?}", annuals[2]); //
     } else {
