@@ -11,17 +11,17 @@ fn main() {
         let mut c_input = String::new();
         let mut again = String::new(); //Option to try again or not
 
-        //Value for a
+        //reads value and places it in a
         println!("Value of a? ");
         io::stdin().read_line(&mut a_input).expect("Expected a string");
         let a:f64 = a_input.trim().parse().expect("Please enter a valid number next time");
 
-        //Value for b
+        //reads value and places it in b
         println!("Value of b? ");
         io::stdin().read_line(&mut b_input).expect("Expected a string");
         let b:f64 = b_input.trim().parse().expect("Please enter a valid number next time");
 
-        //Value for c
+        //reads value and places it in c
         println!("Value of c? ");
         io::stdin().read_line(&mut c_input).expect("Expected a string");
         let c:f64 = c_input.trim().parse().expect("Please enter a valid number next time");
