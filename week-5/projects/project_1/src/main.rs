@@ -27,7 +27,7 @@ fn main() {
 
     for _ in 1..=order_num{
         let mut input_2 = String::new();
-        println!("What are your orders? (P , F, A, E, W)");
+        println!("What are your orders? (P, F, A, E, W)");
         io::stdin().read_line(&mut input_2).expect("Expected a string!");
         let order:char= input_2.trim().parse().expect("Expected a single character");
 
