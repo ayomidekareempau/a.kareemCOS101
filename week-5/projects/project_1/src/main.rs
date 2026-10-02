@@ -9,7 +9,7 @@ fn main() {
     let mut orders: Vec<(String, f32)> = Vec::new(); //addition of order prices
     let mut total:f32 = 0.0;
 
-    let menu:Vec<(String, f32)> = vec![
+    let menu:[(String, f32); 5] = [
         ("Poundo Yam/ Edinako Soup".to_string(), 3200.0),
         ("Fried Rice & Chicken".to_string(), 3000.0),
         ("Amala & Ewedu Soup".to_string(), 2500.0),
