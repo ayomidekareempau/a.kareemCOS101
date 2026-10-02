@@ -53,7 +53,6 @@ fn main() {
     println!("your total is N{}", total );
     if total >= 10000.0{
         println!("Dicount added, your new total is: N{}", total * 0.95 );
-    } else {
-        println!("Enter valid input!");
-    }
+    } 
+
 }
