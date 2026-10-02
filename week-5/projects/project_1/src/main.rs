@@ -6,24 +6,24 @@ fn main() {
     println!("=========================================");
 
     let mut input_1 = String::new(); //Number of orders
-    let mut orders: Vec<(String, f32)> = Vec::new();
+    let mut orders: Vec<(String, f32)> = Vec::new(); //addition of order prices
     let mut total:f32 = 0.0;
 
     let menu:Vec<(String, f32)> = vec![
-            ("Poundo Yam/ Edinako Soup".to_string(), 3200.0),
-            ("Fried Rice & Chicken".to_string(), 3000.0),
-            ("Amala & Ewedu Soup".to_string(), 2500.0),
-            ("Eba & Egusi Soup".to_string(), 2000.0),
-            ("White Rice & Stew".to_string(), 2500.0)
-        ];
+        ("Poundo Yam/ Edinako Soup".to_string(), 3200.0),
+        ("Fried Rice & Chicken".to_string(), 3000.0),
+        ("Amala & Ewedu Soup".to_string(), 2500.0),
+        ("Eba & Egusi Soup".to_string(), 2000.0),
+        ("White Rice & Stew".to_string(), 2500.0)
+    ];
 
     for (name, price) in &menu {
-        println!("\n{} | {} | {}", name.chars().nth(0).unwrap(), name, price );
+        println!("\n{} | {} | {}", name.chars().nth(0).unwrap(), name, price ); //Displays menu items neatly
     }
 
     println!("How much are you ordering");
     io::stdin().read_line(&mut input_1).expect("Expected a string!");
-    let order_num:u8 = input_1.trim().parse().expect("Expected a positive number!");
+    let order_num:u8 = input_1.trim().parse().expect("Expected a positive number!"); 
 
     for _ in 1..=order_num{
         let mut input_2 = String::new();
@@ -31,35 +31,29 @@ fn main() {
         io::stdin().read_line(&mut input_2).expect("Expected a string!");
         let order:char= input_2.trim().parse().expect("Expected a single character");
 
-        if order == 'P'{
-            orders.push(menu[0].clone())
-        } 
-        else if order == 'F' {
-            orders.push(menu[1].clone())
+        match order {
+            'P'=> orders.push(menu[0].clone()),
+            'F'=> orders.push(menu[1].clone()),
+            'A'=> orders.push(menu[2].clone()),
+            'E'=>orders.push(menu[3].clone()),
+            'W'=>orders.push(menu[4].clone()),
+            _ => println!("Enter a valid order")
         }
-        else if order == 'A' {
-            orders.push(menu[2].clone())
-        }
-        else if order == 'E' {
-            orders.push(menu[3].clone())
-        }
-        else if order == 'W' {
-            orders.push(menu[4].clone())
-        } else{
-            println!("Guy what are you ordering?");
-        }
+    }
+
+    println!("Your oders are:");
+    for i in &orders{
+        println!("{}", i.0);
     }
 
     for i in &orders{
         total += i.1;
     }
 
+    println!("your total is N{}", total );
     if total >= 10000.0{
-        println!("Your total is {}", total * 0.95 );
-    } else if total == 0.0 {
-        println!("Enter valid input");
-    } 
-    else {
-        println!("your total is N{}", total );
+        println!("Dicount added, your new total is: N{}", total * 0.95 );
+    } else {
+        println!("Enter valid input!");
     }
 }
