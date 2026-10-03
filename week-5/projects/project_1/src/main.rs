@@ -41,16 +41,13 @@ fn main() {
         }
     }
 
-    println!("Your oders are:");
+    println!("Your orders are:");
     for i in &orders{
         println!("{}", i.0);
-    }
-
-    for i in &orders{
         total += i.1;
     }
 
-    println!("your total is N{}", total );
+    println!("Your total is: N{}", total );
     if total >= 10000.0{
         println!("Dicount added, your new total is: N{}", total * 0.95 );
     } 
