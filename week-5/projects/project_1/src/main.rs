@@ -29,14 +29,15 @@ fn main() {
         let mut input_2 = String::new();
         println!("What are your orders? (P, F, A, E, W)");
         io::stdin().read_line(&mut input_2).expect("Expected a string!");
-        let order:char= input_2.trim().parse().expect("Expected a single character");
+        let order:String= input_2.trim().parse().expect("Expected a single character");
+        let actual_order = order.to_uppercase();
 
-        match order {
-            'P'=> orders.push(menu[0].clone()),
-            'F'=> orders.push(menu[1].clone()),
-            'A'=> orders.push(menu[2].clone()),
-            'E'=>orders.push(menu[3].clone()),
-            'W'=>orders.push(menu[4].clone()),
+        match actual_order.as_str(){
+            "P"=> orders.push(menu[0].clone()),
+            "F"=> orders.push(menu[1].clone()),
+            "A"=> orders.push(menu[2].clone()),
+            "E"=>orders.push(menu[3].clone()),
+            "W"=>orders.push(menu[4].clone()),
             _ => println!("Enter a valid order")
         }
     }
