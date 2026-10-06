@@ -116,6 +116,11 @@ fn main() {
         io::stdin().read_line(&mut input5).expect("Expected a valid input");
         let calculate:String = input5.trim().parse().expect("Expected a valid input");
 
-        calculate_again = calculate.to_lowercase() == "yes";
+        if calculate.to_lowercase() == "yes" {
+            calculate_again = true;
+        } else {
+            calculate_again = false;
+            println!("Byee!");
+        }
     }
 }
