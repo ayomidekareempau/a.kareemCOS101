@@ -1,10 +1,12 @@
 fn main() {
-    println!("pi value is {}", get_pi());
-}
+    let name1 = "Ayomide Adesokan";
+    println!("My name is {}", name1);
 
-fn get_pi() -> f64 {
-    let a:f64 = 22.0;
-    let b:f64 = 7.0;
-    let c = a/b;
-    return c;
+    let name2 = name1.replace("Ayomide", "Adebare");
+    println!("You can also call me {}", name2 );
+    let faculty = "Faculty of Science and Technology";
+
+    let school = faculty.replace("Faculty", "School");
+    println!("I am a student of the {}", school );
+
 }

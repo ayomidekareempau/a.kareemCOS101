@@ -1,121 +1,56 @@
 use std::io;
 
-fn area_trapezium(height:f64, a:f64, b: f64){
-    let area:f64  = (height / 2.0 ) * (a + b);
-    println!("The area of the trapezium is: {} ", area);
-}
-
-fn area_rhombus(a:f64, b:f64){
-    let area:f64 = 0.5 * a * b;
-    println!("The area of the rhombus is: {}", area);
-}
-
-fn area_parallelogram(base: f64, altitude: f64){
-    let area:f64 = base * altitude;
-    println!("The area of the parallelogram is: {}", area );
-}
-
-fn surface_area_cube(side: f64){
-    let s_area = 6.0 * side * side;
-    println!("The surface area of the cube: {}", s_area );
-}
-
-fn volume_cylinder(radius: f64, height:f64){
-    let pi:f64 = 22.0 / 7.0;
-    let volume:f64 = pi * radius.powf(2.0) * height;
-
-    println!("The volume of the cylinder is: {}", volume );
-}
-
 fn main() {
-    println!("=============================================");
-    println!("THE SHAPE CALCULATOR");
-    println!("=============================================");
+    println!("=========================================");
+    println!("RESTUARANT MENU");
+    println!("=========================================");
 
-    let mut calculate_again:bool = true;
+    let mut input_1 = String::new(); //Number of orders
+    let mut orders: Vec<(String, f32)> = Vec::new(); //addition of order prices
+    let mut total:f32 = 0.0;
 
-    while calculate_again {
-        let mut input1 = String::new();
-        let mut input2 = String::new();
-        let mut input3 = String::new();
-        let mut input4 = String::new();
-        let mut input5 = String::new(); //try again logic
+    let menu:[(String, f32); 5] = [
+        ("Poundo Yam/ Edinako Soup".to_string(), 3200.0),
+        ("Fried Rice & Chicken".to_string(), 3000.0),
+        ("Amala & Ewedu Soup".to_string(), 2500.0),
+        ("Eba & Egusi Soup".to_string(), 2000.0),
+        ("White Rice & Stew".to_string(), 2500.0)
+    ];
 
-        println!("
-            1. Calculate area of trapezium \n
-            2. Calculate area of rhombus\n
-            3. Calculate area of parallelogram \n
-            4. Calculate surface area of cube \n
-            5. Calculate volume of cylinder \n
-        ");
-
-        println!("Choose an option to calculate");
-        io::stdin().read_line(&mut input1).expect("Expected valid input");
-        let choice:u8 = input1.trim().parse().expect("Expected a valid number");
-
-        match choice {
-            1 => {
-                println!("Enter first base: ");
-                io::stdin().read_line(&mut input2).expect("Expected valid input");
-                let a:f64 = input2.trim().parse().expect("Expected a valid number");
-
-                println!("Enter second base: ");
-                io::stdin().read_line(&mut input3).expect("Expected valid input");
-                let b:f64 = input3.trim().parse().expect("Expected a valid number");
-
-                println!("Enter height");
-                io::stdin().read_line(&mut input4).expect("Expeced a valid input");
-                let c:f64 = input4.trim().parse().expect("Expected a valid number");
-
-                area_trapezium(c, a, b);
-            },
-            2 => {
-                println!("Enter first diagonal: ");
-                io::stdin().read_line(&mut input2).expect("Expected a valid input");
-                let d1:f64 = input2.trim().parse().expect("Expected a valid number");
-
-                println!("Enter second diagonal: ");
-                io::stdin().read_line(&mut input3).expect("Expected a valid input");
-                let d2:f64 = input3.trim().parse().expect("Expected a valid number");
-
-                area_rhombus(d1, d2);
-            },
-            3 => {
-                println!("Enter the base: ");
-                io::stdin().read_line(&mut input2).expect("Expected a valid input");
-                let base:f64 = input2.trim().parse().expect("Expected a valid number");
-
-                println!("Enter the altidude: ");
-                io::stdin().read_line(&mut input3).expect("Expected a valid input");
-                let altitude:f64 = input3.trim().parse().expect("Expected a valid number");
-
-                area_parallelogram(base, altitude);
-            },
-            4 => {
-                println!("Enter the length of side: ");
-                io::stdin().read_line(&mut input2).expect("Expected a valid input");
-                let side:f64 = input2.trim().parse().expect("Expected a valid number");
-
-                surface_area_cube(side);
-            },
-            5 => {
-                println!("Enter the radius: ");
-                io::stdin().read_line(&mut input2).expect("Expected a valid input");
-                let radius:f64 = input2.trim().parse().expect("Expected a valid number");
-
-                println!("Enter the height: ");
-                io::stdin().read_line(&mut input3).expect("Expected a valid input");
-                let height:f64 = input3.trim().parse().expect("Expected a valid number");
-
-                volume_cylinder(radius, height);
-            }
-            _ => println!("Invalid input"),
-        }
-
-        println!("Would u like to calculate again");
-        io::stdin().read_line(&mut input5).expect("Expected a valid input");
-        let calculate:String = input5.trim().parse().expect("Expected a valid input");
-
-        calculate_again = calculate.to_lowercase() == "yes";
+    for (name, price) in &menu {
+        println!("\n{} | {} | {}", name.chars().nth(0).unwrap(), name, price ); //Displays menu items neatly
     }
+
+    println!("How much are you ordering");
+    io::stdin().read_line(&mut input_1).expect("Expected a string!");
+    let order_num:u8 = input_1.trim().parse().expect("Expected a positive number!"); 
+
+    for _ in 1..=order_num{
+        let mut input_2 = String::new();
+        println!("What are your orders? (P, F, A, E, W)");
+        io::stdin().read_line(&mut input_2).expect("Expected a string!");
+        let order:String= input_2.trim().parse().expect("Expected a single character");
+        let actual_order = order.to_uppercase();
+
+        match actual_order.as_str(){
+            "P"=> orders.push(menu[0].clone()),
+            "F"=> orders.push(menu[1].clone()),
+            "A"=> orders.push(menu[2].clone()),
+            "E"=>orders.push(menu[3].clone()),
+            "W"=>orders.push(menu[4].clone()),
+            _ => println!("Enter a valid order")
+        }
+    }
+
+    println!("Your orders are:");
+    for i in &orders{
+        println!("{}", i.0);
+        total += i.1;
+    }
+
+    println!("Your total is: N{}", total );
+    if total >= 10000.0{
+        println!("Dicount added, your new total is: N{}", total * 0.95 );
+    } 
+
 }

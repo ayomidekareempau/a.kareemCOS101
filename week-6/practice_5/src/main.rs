@@ -1,10 +1,11 @@
 fn main() {
-    let num:i32 = 5;
-    mutate_num_to_zero(num);
-    println!("The value of no is: {}",num );
-}
-
-fn mutate_num_to_zero(mut param_num:i32){
-    param_num = param_num * 0;
-    println!("param_num is: {}", param_num);
+    let fullname = " Pan-Atlantic University ";
+    println!();
+    println!("Name: {}", fullname );
+    println!();
+    println!("Before trim ");
+    println!("length is {}", fullname.len());
+    println!();
+    println!("After trim");
+    println!("length is {}", fullname.trim().len());
 }
