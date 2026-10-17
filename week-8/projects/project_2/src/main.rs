@@ -14,7 +14,7 @@ fn main() {
     io::stdin().read_line(&mut input_1).expect("Expected a valid string!");
     let users:u8 = input_1.trim().parse().expect("Expected a valid number!");
 
-	for _ in 1..=users{ 
+	for i in 1..=users{ 
 	    let mut input_2 = String::new(); //name
 		let mut input_3 = String::new(); //years of exp
 
