@@ -27,7 +27,7 @@ fn main() {
         file.write_all(level.as_bytes()).expect("couldn't write!");
     }
 
-    opened_file.read_to_string(&mut contents).expect("couldnt modify files");
+    opened_file.read_to_string(&mut contents).expect("couldnt read files");
     print!("{}", contents);
 
 }
