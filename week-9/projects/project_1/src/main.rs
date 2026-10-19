@@ -1,6 +1,4 @@
 use std::io::Write;
-use std::io::Read;
-use std::fs::OpenOptions;
 
 fn main() {
     let mut file = std::fs::File::create("data.csv")
